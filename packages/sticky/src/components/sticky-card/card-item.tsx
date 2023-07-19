@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import './card_item.less'
+import './card-item.less'
 import classNames from 'classnames'
 interface CardStickyItemProps {
   /** 卡片头部 */
@@ -12,6 +12,8 @@ interface CardStickyItemProps {
   containerClientRect?: DOMRect | null
   
   children: React.ReactNode
+  /** 距离顶部的offset */
+  offset?: number
   /**
    * 渲染footer
    */
@@ -27,6 +29,7 @@ const CardStickyItem = (props: CardStickyItemProps) => {
     children,
     title,
     extra,
+    offset = 0,
     renderFooter,
   } = props
 
@@ -43,9 +46,10 @@ const CardStickyItem = (props: CardStickyItemProps) => {
             left: 0,
             zIndex: 999,
             border: '1px solid #ebebeb',
-            /** 删除操作栏宽度 = 50，滚动条宽度 = 7 */
-            width: `calc(${containerClientRect?.width}px - 50px - 9px)`,
-            transform: `translate(${containerClientRect?.left}px, ${64}px)`,
+            /**滚动条宽度 = 7 */
+            width: `calc(${containerClientRect?.width}px)`,
+            transform: `translate(${containerClientRect?.left}px, ${offset}px)`,
+            backgroundColor: 'red',
           }
         : {}
 
@@ -67,27 +71,20 @@ const CardStickyItem = (props: CardStickyItemProps) => {
   )
 
   return (
-    <div className='card-sticky-item-container-with-actions'>
-      <div className={classNames('card-sticky-item-container')}>
-        {/* 占位 */}
-        {(isActive && renderHeader(isActive)) || null}
-        {renderHeader(false)}
-        <div className='card-item-content'>
-          <div>{children}</div>
-        </div>
-        <div
-          className={classNames('card-item-footer', {
-            'empty-footer': !renderFooter,
-          })}
-        >
-          {renderFooter?.()}
-        </div>
+    <div className={classNames('card-sticky-item-container')}>
+      {/* 占位 */}
+      {(isActive && renderHeader(isActive)) || null}
+      {renderHeader(false)}
+      <div className='card-item-content'>
+        <div>{children}</div>
       </div>
-      {/* {canRemove && (
-        <div className='actions' onClick={() => onDelete?.()}>
-          删除
-        </div>
-      )} */}
+      <div
+        className={classNames('card-item-footer', {
+          'empty-footer': !renderFooter,
+        })}
+      >
+        {renderFooter?.()}
+      </div>
     </div>
   )
 }

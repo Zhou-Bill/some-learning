@@ -5,8 +5,8 @@ import { StickyCard, StickyCardItem } from './components/sticky-card';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App" style={{height: 2000}}>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -19,23 +19,25 @@ function App() {
         >
           Learn React
         </a>
-      </header>
-      <StickyCard>
-        <StickyCardItem title="卡片1">
-          123123123
-        </StickyCardItem>
-        <StickyCardItem title="卡片2">
-          123123123
-        </StickyCardItem>
-        <StickyCardItem title="卡片2">
-          123123123
-        </StickyCardItem>
-        <StickyCardItem title="卡片2">
-          123123123
-        </StickyCardItem>
-        <StickyCardItem title="卡片2">
-          123123123
-        </StickyCardItem>
+      </header> */}
+      <StickyCard offset={0}>
+        {
+          [1, 2, 3, 4].map((_item) => {
+            return (
+              <StickyCardItem key={_item} title={`卡片${_item}`}>
+                {
+                  Array.from({ length: 6 * _item }).map((item, index) => {
+                    return (
+                      <div style={{height: 32}} key={index}>
+                        123123123-{index}
+                      </div>
+                    )
+                  })
+                }
+              </StickyCardItem>
+            )
+          })
+        }
       </StickyCard>
     </div>
   );

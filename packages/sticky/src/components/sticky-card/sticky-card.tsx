@@ -1,6 +1,7 @@
 import { useEvent } from '../../hooks/useEvent'
 import lodash, { throttle } from 'lodash'
 import React, { useEffect, useRef } from 'react'
+import { getScroll } from '../../utils'
 
 export type ElementNodeType = React.ReactNode & {
   index: string | number
@@ -18,9 +19,8 @@ type PosInfoType = {
   offsetTop: number
   offsetHeight: number
 }
-/** 头部导航栏高度 */
-const NAV_HEIGHT = 64
 
+const NAV_HEIGHT = 0
 const StickyCard = (props: StickyCardProps) => {
   const { children, offset = 0 } = props
   const ref = useRef<null | HTMLDivElement>(null)
@@ -41,6 +41,10 @@ const StickyCard = (props: StickyCardProps) => {
     }
     const domRect = element.getBoundingClientRect()
     setContainerClientRect(domRect)
+
+    // return () => {
+    //   window.scrollTo(0, 0)
+    // }
   }, [])
 
   /**
@@ -55,7 +59,6 @@ const StickyCard = (props: StickyCardProps) => {
     if (containerClientRect === null) {
       return
     }
-    // const domRect = element.getBoundingClientRect()
     let offsetTop = containerClientRect!.top - NAV_HEIGHT
     const childrenData = lodash.map(element.children, (item) => item)
     const res = (childrenData as unknown as HTMLDivElement[])?.map((_item) => {
@@ -72,15 +75,13 @@ const StickyCard = (props: StickyCardProps) => {
 
   const handleScroll = useEvent(
     throttle((e) => {
-      const scrollTop = e.srcElement
-        ? e.srcElement.documentElement.scrollTop || e.srcElement.body.scrollTop
-        : document.documentElement.scrollTop
+      const scrollTop = getScroll(window, true)
 
       const finalOffsetTop = scrollTop
 
       const index = lodash.findIndex(posInfo, (item) => {
         return (
-          finalOffsetTop >= item.offsetTop &&
+          finalOffsetTop + 48 >= item.offsetTop &&
           finalOffsetTop <= item.offsetTop + item.offsetHeight
         )
       })
@@ -115,6 +116,7 @@ const StickyCard = (props: StickyCardProps) => {
           isActive: index === activeIndex,
           index: index,
           containerClientRect,
+          offset: offset
         })
       })}
     </div>

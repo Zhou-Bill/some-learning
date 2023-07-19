@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StickyCard sticky card 1`] = `
+<div>
+  <div
+    id="element"
+    style="height: 2000px;"
+  >
+    <div
+      style="position: relative;"
+    >
+      <div
+        class="card-sticky-item-container"
+      >
+        <div
+          class="card-item-header"
+        >
+          <div>
+            卡片1
+          </div>
+        </div>
+        <div
+          class="card-item-content"
+        >
+          <div>
+            <div
+              style="height: 32px;"
+            >
+              卡片内容-
+              0
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-item-footer empty-footer"
+        />
+      </div>
+      <div
+        class="card-sticky-item-container"
+      >
+        <div
+          class="card-item-header"
+        >
+          <div>
+            卡片2
+          </div>
+        </div>
+        <div
+          class="card-item-content"
+        >
+          <div>
+            <div
+              style="height: 32px;"
+            >
+              卡片内容-
+              0
+            </div>
+            <div
+              style="height: 32px;"
+            >
+              卡片内容-
+              1
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-item-footer empty-footer"
+        />
+      </div>
+      <div
+        class="card-sticky-item-container"
+      >
+        <div
+          class="card-item-header"
+        >
+          <div>
+            卡片3
+          </div>
+        </div>
+        <div
+          class="card-item-content"
+        >
+          <div>
+            <div
+              style="height: 32px;"
+            >
+              卡片内容-
+              0
+            </div>
+            <div
+              style="height: 32px;"
+            >
+              卡片内容-
+              1
+            </div>
+            <div
+              style="height: 32px;"
+            >
+              卡片内容-
+              2
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-item-footer empty-footer"
+        />
+      </div>
+      <div
+        class="card-sticky-item-container"
+      >
+        <div
+          class="card-item-header"
+        >
+          <div>
+            卡片4
+          </div>
+        </div>
+        <div
+          class="card-item-content"
+        >
+          <div>
+            <div
+              style="height: 32px;"
+            >
+              卡片内容-
+              0
+            </div>
+            <div
+              style="height: 32px;"
+            >
+              卡片内容-
+              1
+            </div>
+            <div
+              style="height: 32px;"
+            >
+              卡片内容-
+              2
+            </div>
+            <div
+              style="height: 32px;"
+            >
+              卡片内容-
+              3
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-item-footer empty-footer"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
